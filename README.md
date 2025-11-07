@@ -12,7 +12,9 @@
 | `npm install <package> --save-dev`        | **Install a package for development only**                   | Installation   |
 | `npm uninstall <package>`                 | **Remove a package and update `package.json`**               | Maintenance    |
 | `npm update`                              | **Update all packages to latest compatible versions**        | Maintenance    |
+| `npm update --dev`                        | **Update all packages to latest compatible versions in dev** | Maintenance    |
 | `npm outdated`                            | **List outdated packages**                                   | Maintenance    |
+| `npm outdated --dev`                      | **List outdated packages in dev**                            | Maintenance    |
 | `npm audit`                               | **Scan for vulnerabilities**                                 | Security       |
 | `npm audit fix`                           | **Automatically fix vulnerabilities**                        | Security       |
 | `npm run <script>`                        | **Run a custom script from `package.json`**                  | Scripts        |

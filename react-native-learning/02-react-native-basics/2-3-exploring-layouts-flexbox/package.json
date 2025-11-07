@@ -1,9 +1,8 @@
 {
-  "name": "2-1-starting-project",
+  "name": "exploring-layouts",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "local-start": "dotenv -e .env -- npx expo start --lan",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
