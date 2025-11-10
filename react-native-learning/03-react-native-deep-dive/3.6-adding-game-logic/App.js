@@ -3,13 +3,10 @@ import {ImageBackground, StyleSheet, View} from "react-native";
 import {LinearGradient} from "expo-linear-gradient";
 
 /**
- *  - By default, <View> takes a much as space as they need to fit their content into themselves.
- *      - To apply bg color to whole scree, use flex: 1
- *  - For linear gradient, refer: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
- *
- *  - We want to overlay a background image above the gradient, but below the upper element (Input element) on the UI
- *      - Image source (great resource to find free images) - https://unsplash.com/
- *      - To have the gradient below the image, we've to make this image transparent.
+ *  Game Logic includes
+ *      - Fetching the User input
+ *      - Resetting the user input
+ *      - Moving to actual game screen if we confirm the input (validate input)
  */
 export default function App() {
     return (
@@ -20,17 +17,12 @@ export default function App() {
                 <StartGameScreen/>
             </ImageBackground>
         </LinearGradient>
-
-        // <View style={styles.rootScreen}>
-        //     <StartGameScreen/>
-        // </View>
     );
 }
 
 const styles = StyleSheet.create({
     rootScreen: {
         flex: 1,
-        // backgroundColor: "#ddb52f",
     },
     backgroundImage: {
         opacity: 0.15

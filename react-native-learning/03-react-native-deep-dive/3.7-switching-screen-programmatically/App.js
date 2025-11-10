@@ -1,36 +1,37 @@
 import StartGameScreen from "./screens/StartGameScreen";
 import {ImageBackground, StyleSheet, View} from "react-native";
 import {LinearGradient} from "expo-linear-gradient";
+import {useState} from "react";
+import GameScreen from "./screens/GameScreen";
 
-/**
- *  - By default, <View> takes a much as space as they need to fit their content into themselves.
- *      - To apply bg color to whole scree, use flex: 1
- *  - For linear gradient, refer: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
- *
- *  - We want to overlay a background image above the gradient, but below the upper element (Input element) on the UI
- *      - Image source (great resource to find free images) - https://unsplash.com/
- *      - To have the gradient below the image, we've to make this image transparent.
- */
 export default function App() {
+
+    const [userNumber, setUserNumber] = useState();
+
+    const pickedNumberHandler = (pickedNumber) => {
+        setUserNumber(pickedNumber);
+    };
+
+    let screen = <StartGameScreen onPickedNumber={pickedNumberHandler} />;
+
+    if(userNumber) {
+        screen = <GameScreen/>;
+    }
+
     return (
         <LinearGradient colors={['#4e0329', '#ddb52f']} style={styles.rootScreen}>
             <ImageBackground source={require('./assets/images/background.png')}
                              resizeMethod="cover" style={styles.rootScreen}
                              imageStyle={styles.backgroundImage}>
-                <StartGameScreen/>
+                {screen}
             </ImageBackground>
         </LinearGradient>
-
-        // <View style={styles.rootScreen}>
-        //     <StartGameScreen/>
-        // </View>
     );
 }
 
 const styles = StyleSheet.create({
     rootScreen: {
         flex: 1,
-        // backgroundColor: "#ddb52f",
     },
     backgroundImage: {
         opacity: 0.15
