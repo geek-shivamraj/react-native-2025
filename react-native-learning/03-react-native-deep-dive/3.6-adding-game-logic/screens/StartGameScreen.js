@@ -1,27 +1,50 @@
-import {StyleSheet, TextInput, View} from "react-native";
+import {Alert, StyleSheet, TextInput, View} from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
+import {useState} from "react";
 
 /**
- *  - To restrict the digit size on input element, we can use "maxLength" prop.
- *
- *  - To control the type of keyboard is opened by the device on input, we can use "keyboardType" prop.
- *
- *  - Refer the doc for all the props for TextInput component: https://reactnative.dev/docs/textinput
+ *  - Even though we've keyboardType as number-pad, we will always get input type as string only.
+ *  - React Native exposes an Alert API (not a component but alert is an object that holds a method that we can call to show an alert)
  *
  */
 const StartGameScreen = () => {
+
+    const [enteredNumber, setEnteredNumber] = useState('');
+
+    const numberInputHandler = (enteredText) => {
+        setEnteredNumber(enteredText);
+    }
+
+    const resetInputHandler = () => {
+        setEnteredNumber('');
+    }
+
+    // Input Validation Logic
+    const confirmInputHandler = () => {
+        const chosenNumber = parseInt(enteredNumber);
+
+        if(isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+            // show alert...
+            Alert.alert('Invalid number!', 'Number has to be a number b/w 1 and 99',
+                [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler}]);
+            return;
+        }
+
+        console.log('Valid number');
+    }
+
     return (
         <View style={styles.inputContainer}>
             <TextInput
                 style={styles.numberInput} maxLength={2}
                 keyboardType="number-pad" autoCapitalize="none"
-                autoCorrect={false}/>
+                autoCorrect={false} onChangeText={numberInputHandler} value={enteredNumber}/>
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton>Reset</PrimaryButton>
+                    <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton>Confirm</PrimaryButton>
+                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
                 </View>
             </View>
         </View>
