@@ -1,5 +1,12 @@
 ## 📋 React Native NPM Commands Reference
 
+### Frequent used command
+
+| **Command**        | **Description**                         | **Category**                         |
+|--------------------|-----------------------------------------|--------------------------------------|
+| `npx expo install` | Installs SDK-compatible packages.       | `npx expo install react-native-maps` |
+| `npx expo-doctor`  | Diagnoses issues in your project setup. | `npx expo-doctor`                    |
+
 - ### npm install react react-dom
 
 | **Command**                               | **Description**                                              | **Category**   |
@@ -30,6 +37,7 @@
 ## 🚀 Expo CLI & Create Expo App Commands
 
 ### Reference Documents
+
 - Expo versions: https://docs.expo.dev/versions/latest/
 - Create Expo - https://docs.expo.dev/more/create-expo/
 
