@@ -10,11 +10,15 @@ import { Colors } from './constants/styles';
 const Stack = createNativeStackNavigator();
 
 /**
- *  - To implement Authentication, we need a backend to store user details & verify & validate entered credentials & generate the token which
- *      then might be needed for further requests to other resources provided by the backend.
+ *  - Let's send authentication requests to the backend (Firebase Signup endpoint). Refer auth.js
+ *      - Signup doc - https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
+ *      - endpoint: https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
  *
- *  - We can use "Firebase" Authentication as dummy backend coz Firebase helps us with implementing authentication without writing any backend code.
- *      - Refer: https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
+ *  - Refer SignupScreen.js
+ *  - For logging user in: Refer LoginScreen.js
+ *      - Sign in doc: https://firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password
+ *      - endpoint: https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
+ *
  */
 function AuthStack() {
   return (

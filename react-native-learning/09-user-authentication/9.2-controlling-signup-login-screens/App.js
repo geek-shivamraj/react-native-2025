@@ -15,6 +15,9 @@ const Stack = createNativeStackNavigator();
  *
  *  - We can use "Firebase" Authentication as dummy backend coz Firebase helps us with implementing authentication without writing any backend code.
  *      - Refer: https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
+ *
+ *  - Controlling signup & Login Screens (Switching b/w these screens on button click) - Refer AuthContent.js
+ *
  */
 function AuthStack() {
   return (

@@ -6,15 +6,16 @@ import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import { Colors } from './constants/styles';
+import AuthContextProvider from "./store/auth-context";
 
 const Stack = createNativeStackNavigator();
 
 /**
- *  - To implement Authentication, we need a backend to store user details & verify & validate entered credentials & generate the token which
- *      then might be needed for further requests to other resources provided by the backend.
+ *  - In case, user logs in with valid credentials: we would like to switch to WelcomeScreen.
+ *  - In order to do this, we need to store the info that a user was logged in somewhere in our application & whenever we
+ *      want to store data that might be needed in different parts of the app: Redux or React context is a good choice.
+ *  - Here we will use React context to manage authentication status.
  *
- *  - We can use "Firebase" Authentication as dummy backend coz Firebase helps us with implementing authentication without writing any backend code.
- *      - Refer: https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
  */
 function AuthStack() {
   return (
@@ -47,9 +48,11 @@ function AuthenticatedStack() {
 
 function Navigation() {
   return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
+      <AuthContextProvider>
+          <NavigationContainer>
+              <AuthStack />
+          </NavigationContainer>
+      </AuthContextProvider>
   );
 }
 
