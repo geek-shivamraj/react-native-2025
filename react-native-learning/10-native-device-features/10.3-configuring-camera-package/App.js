@@ -8,6 +8,10 @@ import {Colors} from "./constants/colors";
 
 const Stack = createNativeStackNavigator();
 
+/**
+ *  Now it's finally time to start taking pictures. Refer ImagePicker.js
+ *
+ */
 export default function App() {
     return (
         <>
