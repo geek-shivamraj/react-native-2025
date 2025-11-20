@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Native Device Features",
+    "name": "Native Feature: Camera",
     "slug": "expo-blank-template",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,6 +24,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "The app needs access to your camera in order to take photos of your favorite places."
+        }
+      ]
+    ]
   }
 }
