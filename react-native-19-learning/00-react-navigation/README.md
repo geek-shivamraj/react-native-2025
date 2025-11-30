@@ -27,6 +27,10 @@ To specify screen-specific options, we can specify an `options` property, and fo
 - Don't keep application specific data or cached data in params; instead, use a global store or cache.
 - Some param names are reserved by React Navigation and should be avoided (https://reactnavigation.org/docs/params?config=static#reserved-param-names)
 
+### Configuring the header bar
+- You can customize the header inside of the options property of your screens. Read the full list of options in the API reference: https://reactnavigation.org/docs/native-stack-navigator/#options
+- The `options` property can be an object or a function. When it is a function, it is provided with an object with the `navigation` and `route` objects.
+- You can also specify shared `screenOptions` in the stack navigator configuration when you initialize it. This will apply to all screens in the navigator.
 
 It includes the following:
 
