@@ -1,17 +1,18 @@
 import {type StaticScreenProps, useNavigation} from "@react-navigation/native";
 import {Text, View} from "react-native";
 import {RootStackParamList} from "./App";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {NativeStackNavigationProp, NativeStackScreenProps} from "@react-navigation/native-stack";
 import {Button} from "@react-navigation/elements";
 import {useEffect} from "react";
 
-type Props = StaticScreenProps<{
+export type HomeScreenRouteParamList = {
     post?: string;
-}>;
-type HomeScreenNavProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+}
 
-export default function HomeScreen({route} : Props) {
-    const navigation = useNavigation<HomeScreenNavProp>();
+// type HomeScreenNavProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+
+export default function HomeScreen({navigation, route} : NativeStackScreenProps<RootStackParamList, 'Home'>) {
+    // const navigation = useNavigation<HomeScreenNavProp>();
 
     // Use an effect to monitor the update to params
     useEffect(() => {

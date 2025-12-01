@@ -1,13 +1,12 @@
-import type {StaticScreenProps} from '@react-navigation/native';
 import {Text, View} from "react-native";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "./App";
 
-export type ProfileScreenProps = {
+export type ProfileScreenRouteParamList = {
     name: string;
 }
 
-export type ProfileScreenRoute = StaticScreenProps<ProfileScreenProps>;
-
-export default function ProfileScreen({route}: ProfileScreenRoute) {
+export default function ProfileScreen({route}: NativeStackScreenProps<RootStackParamList, 'Profile'>) {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 20}}>
             <Text>Profile Screen: {route.params.name}</Text>
