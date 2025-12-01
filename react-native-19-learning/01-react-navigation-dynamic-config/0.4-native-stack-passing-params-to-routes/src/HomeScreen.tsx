@@ -1,13 +1,13 @@
 import {useNavigation} from "@react-navigation/native";
 import {Text, View} from "react-native";
 import {RootStackParamList} from "./App";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {NativeStackNavigationProp, NativeStackScreenProps} from "@react-navigation/native-stack";
 import {Button} from "@react-navigation/elements";
 
-type HomeScreenNavProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+// type HomeScreenNavProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
-export default function HomeScreen() {
-    const navigation = useNavigation<HomeScreenNavProp>();
+export default function HomeScreen({navigation, route}: NativeStackScreenProps<RootStackParamList>) {
+    // const navigation = useNavigation<HomeScreenNavProp>();
 
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 20}}>

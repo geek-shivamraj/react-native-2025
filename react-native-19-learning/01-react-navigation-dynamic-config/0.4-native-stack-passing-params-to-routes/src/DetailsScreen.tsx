@@ -1,36 +1,20 @@
-import {StaticParamList, useNavigation} from "@react-navigation/native";
+import {RouteProp, StaticParamList, useNavigation} from "@react-navigation/native";
 import {Text, View} from "react-native";
 import {Button} from "@react-navigation/elements";
 import {
-    NativeStackNavigationProp
+    NativeStackNavigationProp, NativeStackScreenProps
 } from "@react-navigation/native-stack";
 import {RootStackParamList} from "./App";
 import type { StaticScreenProps } from '@react-navigation/native';
 
-/**
- *  - Refer Documentation : https://reactnavigation.org/docs/typescript/#navigator-specific-types
- *  - Issue with Static configuration
- *
- *      type DetailsScreenProps = NativeStackScreenProps<RootStackParamList, 'Details'>;
- *      export default function DetailsScreen({ route, navigation }: DetailsScreenProps) {
- *          navigation.push('Details', {...});
- *      }
- *      This should work if DetailsScreen is actually registered inside a <Stack.Navigator>
- *          - <Stack.Screen name="Details" component={DetailsScreen} />
- *
- *  - Since we're using the object-based config with createNativeStackNavigator({ screens: { ... } }).
- *      That pattern doesn’t inject the navigation prop correctly in v6/v7 — so navigation ends up undefined.
- *      When you destructure it, you’re pulling undefined, and calling .push throws the error.
- *
- */
-type Props = StaticScreenProps<{
+export type DetailsScreenRouteParamList = {
     itemId: number; otherParam?: string
-}>;
+}
 
-type DetailsScreenNavProp = NativeStackNavigationProp<RootStackParamList, 'Details'>;
+// type DetailsScreenNavProp = NativeStackNavigationProp<RootStackParamList, 'Details'>;
 
-export default function DetailsScreen({route}: Props) {
-    const navigation = useNavigation<DetailsScreenNavProp>();
+export default function DetailsScreen({navigation, route}: NativeStackScreenProps<RootStackParamList, 'Details'>) {
+    // const navigation = useNavigation<DetailsScreenNavProp>();
 
     /* 2. Get the params */
     const {itemId, otherParam} = route.params;

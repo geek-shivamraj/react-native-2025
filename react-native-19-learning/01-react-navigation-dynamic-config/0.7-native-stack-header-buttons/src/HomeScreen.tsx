@@ -1,15 +1,10 @@
-import {Text, View} from "react-native";
+import {Text} from "react-native";
 import {Button} from "@react-navigation/elements";
-import {useNavigation} from "@react-navigation/native";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import {AppParamList} from "./App";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "./App";
 import {useEffect, useState} from "react";
 
-type HomeScreenNavProp = NativeStackNavigationProp<AppParamList>;
-
-export default function HomeScreen() {
-
-    const navigation = useNavigation<HomeScreenNavProp>();
+export default function HomeScreen({navigation, route}: NativeStackScreenProps<RootStackParamList, 'Home'>) {
 
     const [count, setCount] = useState(0);
 
@@ -23,7 +18,5 @@ export default function HomeScreen() {
         });
     }, [navigation]);
 
-    return (
-        <Text>Count: {count}</Text>
-    );
+    return <Text>Count: {count}</Text>;
 }
