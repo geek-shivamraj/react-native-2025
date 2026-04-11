@@ -175,3 +175,16 @@ const StackNavigator = (
     - `navigation.popToTop()` - Go back to the first screen in the stack
 
 ![img.png](readme-img/img.png)
+
+### Passing Parameters to routes
+- https://reactnavigation.org/docs/params
+- There are 2 pieces to this:
+  1. Pass `params` as the second argument to navigation methods: `navigation.navigate('RouteName', { /* params go here */ })`
+  2. Read `params` from `route.params` inside the screen component.
+- Recommendation: Pass params as JSON-serializable. That way, you'll be able to use state persistence and your screen components will have the right contract for implementing deep linking.
+
+### Updating params
+- Screens can update their params using `navigation.setParams()`
+- `setParams` merges new params with existing ones. To replace params entirely, use `navigation.replaceParams`
+- Avoid using `setParams` or `replaceParams` to update screen options like `title`. Use `navigation.setOptions` instead.
+
