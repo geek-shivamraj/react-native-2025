@@ -144,5 +144,34 @@ const StackNavigator = (
     - The `@react-navigation/elements` library provides components designed to work with React Navigation like `Button` etc.
   - Make sure you've already installed `@react-navigation/native` & [associated libraries](https://reactnavigation.org/docs/getting-started#installation).
 
+### Moving between screens
 
----
+**Way 1:** Using the `Link` component from `@react-navigation/native` or the `Button` component from `@react-navigation/elements`
+  - Refer: https://reactnavigation.org/docs/navigating#using-link-or-button-components
+  - The `Link` and `Button` components accept a `screen` prop specifying where to navigate when pressed.
+  - The built-in `Link` and `Button` components have their own styling. To create custom link or button components matching your app's design, see the `useLinkProps` hook.
+
+
+**Way 2:** Using the `navigation` object
+  - This method gives you more control over when & how navigation happens.
+  - The `navigation` object is available in your screen components through the `useNavigation` hook
+    - The useNavigation hook returns the navigation object. We can call navigate with the route name we want to go to.
+
+    
+### Navigate to a screen multiple times
+  - What happens if we navigate to Details again while already on the Details screen?
+    - `navigation.navigate()` function will do nothing.
+    - `navigation.push()` function adds another route regardless of the existing navigation history
+    - Each push call adds a new route to the stack, while navigate only pushes if you're not already on that route.
+
+### Going back
+  - The native stack navigator's header automatically shows a back button when there's a screen to go back to.
+    - We can use `navigation.goBack()` to trigger going back programmatically from our own buttons.
+    - On Android, React Navigation calls goBack() automatically on hardware back button press or back gesture.
+
+  - Sometimes we need to go back multiple screens at once. For example, if we're several screens deep in a stack and want to go back to the first screen. 
+  - We have two options: 
+    - `navigation.popTo('Home')` - Go back to a specific screen (in this case, Home)
+    - `navigation.popToTop()` - Go back to the first screen in the stack
+
+![img.png](readme-img/img.png)
